@@ -1,17 +1,24 @@
 import React from 'react';
-import Layout from 'components/Layout';
+import '../App.css';
+import styled from 'styled-components';
 import Header from 'components/Header';
 import Form from 'components/Form';
 import List from 'components/List';
 
 function Home() {
   return (
-    <Layout>
+    <StLayout>
       <Header />
       <Form />
       <List />
-    </Layout>
+    </StLayout>
   );
 }
 
 export default Home;
+
+const StLayout = styled.div`
+  max-width: 1200px;
+  min-width: 800px;
+  margin: 0 auto;
+`;
