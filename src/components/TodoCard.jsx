@@ -5,14 +5,19 @@ import { styled } from 'styled-components';
 import Delete from 'img/Delete.png';
 import Detail from 'img/Detail.png';
 import Check from 'img/Check.png';
-import { Link } from 'react-router-dom';
+import nonChecked from 'img/nonChecked.jpg';
+import { Link, useLocation } from 'react-router-dom';
 
 function TodoCard({ isDone }) {
   const dispatch = useDispatch();
   const todos = useSelector((state) => state.todos.todos);
+  const location = useLocation();
 
   const onClickDeleteBtn = (id) => {
-    dispatch(deleteTodo(id));
+    const confirmDelete = window.confirm('정말 삭제하시겠습니까?');
+    if (confirmDelete) {
+      dispatch(deleteTodo(id));
+    }
   };
 
   const onClickUpdateBtn = (id) => {
@@ -28,19 +33,27 @@ function TodoCard({ isDone }) {
           return (
             <StDiv key={item.id}>
               <StUpdateBtn onClick={() => onClickUpdateBtn(item.id)}>
-                <StUpdateImg src={Check} alt="체크버튼" />
+                {isDone ? (
+                  <StUpdateImg src={Check} alt="완료버튼" />
+                ) : (
+                  <StUpdateImg src={nonChecked} alt="취소버튼" />
+                )}
+                <StButtonLabel>{isDone ? '취소' : '완료'}</StButtonLabel>
               </StUpdateBtn>
-              {isDone ? '취소' : '완료'}
+
               <StSpan>
-                <StP>{item.title}</StP>
+                <StTitle>{item.title}</StTitle>
                 <StP>{item.contents}</StP>
               </StSpan>
-              <Link to={`/modal/${item.id}`}>
-                <StImg src={Detail} alt="상세보기" />
-              </Link>
-              <StDeleteBtn onClick={() => onClickDeleteBtn(item.id)}>
-                <StImg src={Delete} alt="삭제버튼" />
-              </StDeleteBtn>
+
+              <StBtns>
+                <Link to={`/modal/${item.id}`} state={{ background: location }}>
+                  <StImg src={Detail} alt="상세보기" />
+                </Link>
+                <StDeleteBtn onClick={() => onClickDeleteBtn(item.id)}>
+                  <StImg src={Delete} alt="삭제버튼" />
+                </StDeleteBtn>
+              </StBtns>
             </StDiv>
           );
         })}
@@ -70,11 +83,20 @@ const StH2 = styled.h2`
 const StSpan = styled.span`
   margin-left: 20px;
   margin-right: 20px;
+  line-height: 25px;
+`;
+
+const StTitle = styled.p`
+  background-color: white;
+  color: #424141;
+  font-weight: bold;
+  font-size: 18px;
 `;
 
 const StP = styled.p`
   background-color: white;
   color: #424141;
+  opacity: 0.7;
 `;
 
 const StUpdateBtn = styled.button`
@@ -82,6 +104,7 @@ const StUpdateBtn = styled.button`
   background-color: white;
   color: #424141;
   border: none;
+  position: relative;
 `;
 
 const StUpdateImg = styled.img`
@@ -90,10 +113,32 @@ const StUpdateImg = styled.img`
   left: -5px;
 `;
 
+const StButtonLabel = styled.span`
+  position: absolute;
+  left: 50%;
+  top: -20px;
+  width: 45px;
+  height: 60px;
+  transform: translateX(-50%);
+  font-size: 12px;
+  opacity: 0;
+  transition: opacity 0.3s;
+  &:hover {
+    opacity: 1;
+    background: none;
+    font-size: 12px;
+  }
+`;
+
+const StBtns = styled.div`
+  margin-left: auto;
+  gap: 10px;
+`;
+
 const StDeleteBtn = styled.button`
   background-color: white;
   color: #424141;
-  margin-left: auto;
+  margin-left: 5px;
   border: none;
   cursor: pointer;
 `;
