@@ -2,10 +2,9 @@ import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { addTodo } from 'redux/modules/todos';
 
-const INIT_VALUE = { title: '', contents: '', id: Date.now(), isDone: false };
-
 function Form() {
   // 인풋 관련
+  const INIT_VALUE = { title: '', contents: '', id: Date.now(), isDone: false };
   const [todo, setTodo] = useState(INIT_VALUE);
 
   const onChangeHandler = (event) => {

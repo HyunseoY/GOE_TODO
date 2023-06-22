@@ -1,6 +1,6 @@
 import React from 'react';
 
-function Detail() {
+function Modal() {
   return (
     <div>
       <p>todo의 id</p>
@@ -11,4 +11,4 @@ function Detail() {
   );
 }
 
-export default Detail;
+export default Modal;
