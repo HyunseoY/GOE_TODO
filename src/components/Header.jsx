@@ -11,6 +11,6 @@ const StHeader = styled.header`
   color: white;
   font-weight: bold;
   font-size: 45px;
-  height: 80px;
+  height: 70px;
   padding-right: 665px;
 `;

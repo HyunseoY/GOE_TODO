@@ -42,7 +42,7 @@ const StLayout = styled.div`
   margin: 0 auto;
   display: flex;
   position: relative;
-  top: -200px;
+  top: -230px;
   background: none;
   flex-direction: column;
   align-items: center;
