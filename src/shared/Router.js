@@ -12,10 +12,9 @@ const Router = () => {
         <Route path="/" element={<Home />}>
           {/* {background && <Route path="modal" element={<Modal />} />} */}
         </Route>
-        <Route path="All" element={<All />} />
-        <Route path="Active" element={<Active />} />
-        <Route path="Completed" element={<Completed />} />
-        <Route path="/detail" element={<Completed />} />
+        <Route path="all" element={<All />} />
+        <Route path="active" element={<Active />} />
+        <Route path="completed" element={<Completed />} />
       </Routes>
     </BrowserRouter>
   );

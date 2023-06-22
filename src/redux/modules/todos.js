@@ -26,14 +26,7 @@ export const updateTodo = (payload) => {
 };
 
 const initialState = {
-  todos: [
-    {
-      title: '제목',
-      content: '내용',
-      id: Date.now(),
-      isDone: false,
-    },
-  ],
+  todos: [],
 };
 
 const todos = (state = initialState, action) => {

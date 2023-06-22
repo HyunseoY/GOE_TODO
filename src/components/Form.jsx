@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { addTodo } from 'redux/modules/todos';
+import { styled } from 'styled-components';
 
 function Form() {
   // 인풋 관련
@@ -24,24 +25,39 @@ function Form() {
   };
 
   return (
-    <form onSubmit={onSubmitAddHandler}>
-      <label>제목</label>
-      <input
+    <StForm onSubmit={onSubmitAddHandler}>
+      <StLabel>제목</StLabel>
+      <StInput
         type="text"
         name="title"
         value={todo.title}
         onChange={onChangeHandler}
       />
-      <label>내용</label>
-      <input
+      <StLabel>내용</StLabel>
+      <StInput
         type="text"
         name="contents"
         value={todo.contents}
         onChange={onChangeHandler}
       />
-      <button type="submit">추가하기</button>
-    </form>
+      <StButton type="submit">추가하기</StButton>
+    </StForm>
   );
 }
 
 export default Form;
+
+const StForm = styled.form`
+  background: none;
+  margin: 10px;
+  background-color: white;
+  padding: 20px;
+  border-radius: 5px;
+  width: 800px;
+`;
+
+const StLabel = styled.label``;
+
+const StInput = styled.input``;
+
+const StButton = styled.button``;
