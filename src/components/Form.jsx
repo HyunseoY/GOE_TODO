@@ -50,7 +50,7 @@ function Form() {
         />
         <StSpan />
       </StDiv>
-      <StButton type="submit">추가</StButton>
+      <StButton type="submit">Add</StButton>
     </StForm>
   );
 }

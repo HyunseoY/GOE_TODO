@@ -5,6 +5,7 @@ import { styled } from 'styled-components';
 import Delete from 'img/Delete.png';
 import Detail from 'img/Detail.png';
 import Check from 'img/Check.png';
+import { Link } from 'react-router-dom';
 
 function TodoCard({ isDone }) {
   const dispatch = useDispatch();
@@ -34,7 +35,9 @@ function TodoCard({ isDone }) {
                 <StP>{item.title}</StP>
                 <StP>{item.contents}</StP>
               </StSpan>
-              <StImg src={Detail} alt="상세보기" />
+              <Link to={`/modal/${item.id}`}>
+                <StImg src={Detail} alt="상세보기" />
+              </Link>
               <StDeleteBtn onClick={() => onClickDeleteBtn(item.id)}>
                 <StImg src={Delete} alt="삭제버튼" />
               </StDeleteBtn>
@@ -52,6 +55,7 @@ const StDiv = styled.div`
   padding: 20px;
   display: flex;
   border-top: 0.1em solid lightgray;
+  align-items: center;
 `;
 
 const StH2 = styled.h2`
@@ -65,6 +69,7 @@ const StH2 = styled.h2`
 
 const StSpan = styled.span`
   margin-left: 20px;
+  margin-right: 20px;
 `;
 
 const StP = styled.p`
@@ -73,6 +78,7 @@ const StP = styled.p`
 `;
 
 const StUpdateBtn = styled.button`
+  cursor: pointer;
   background-color: white;
   color: #424141;
   border: none;
