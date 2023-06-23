@@ -21,7 +21,7 @@ function Form() {
     e.preventDefault();
     if (todo.title === '' || todo.contents === '') return;
 
-    dispatch(addTodo({ ...todo }));
+    dispatch(addTodo(todo));
     setTodo(INIT_VALUE);
   };
 
