@@ -130,6 +130,7 @@ const StButtonLabel = styled.span`
 `;
 
 const StBtns = styled.div`
+  background-color: white;
   margin-left: auto;
   gap: 10px;
 `;
@@ -143,6 +144,7 @@ const StDeleteBtn = styled.button`
 `;
 
 const StImg = styled.img`
+  background-color: white;
   width: 20px;
   height: 20px;
 `;

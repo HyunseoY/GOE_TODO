@@ -16,7 +16,7 @@ function Detail() {
     <StDiv>
       <StId>ID : {foundTodos.id}</StId>
       <StTitle>{foundTodos.title}</StTitle>
-      <p>{foundTodos.contents}</p>
+      <StP>{foundTodos.contents}</StP>
       <StBtn
         onClick={() => {
           navigate('/');
@@ -48,14 +48,19 @@ const StDiv = styled.div`
 `;
 
 const StId = styled.p`
+  background: none;
   padding: 20px;
   margin-right: auto;
 `;
 
 const StTitle = styled.p`
+  background: none;
   font-weight: bold;
   font-size: 18px;
   margin-bottom: 10px;
+`;
+const StP = styled.p`
+  background: none;
 `;
 
 const StBtn = styled.button`
