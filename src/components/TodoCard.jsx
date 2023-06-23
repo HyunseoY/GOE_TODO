@@ -6,12 +6,11 @@ import Delete from 'img/Delete.png';
 import Detail from 'img/Detail.png';
 import Check from 'img/Check.png';
 import nonChecked from 'img/nonChecked.jpg';
-import { Link, useLocation } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 function TodoCard({ isDone }) {
   const dispatch = useDispatch();
   const todos = useSelector((state) => state.todos.todos);
-  const location = useLocation();
 
   const onClickDeleteBtn = (id) => {
     const confirmDelete = window.confirm('정말 삭제하시겠습니까?');
@@ -47,7 +46,7 @@ function TodoCard({ isDone }) {
               </StSpan>
 
               <StBtns>
-                <Link to={`/modal/${item.id}`} state={{ background: location }}>
+                <Link to={`/detail/${item.id}`}>
                   <StImg src={Detail} alt="상세보기" />
                 </Link>
                 <StDeleteBtn onClick={() => onClickDeleteBtn(item.id)}>
